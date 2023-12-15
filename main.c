@@ -1,7 +1,5 @@
 #include "monty.h"
 
-#define LINE_BUFFER_SIZE 1024
-
 /**
  * main - Entry point of the Monty interpreter program
  * @argc: Number of command-line arguments

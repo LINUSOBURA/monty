@@ -1,12 +1,5 @@
 #include "monty.h"
 
-/**
- * push - function to add an item on top of the stack
- * @stack: doubly linked list
- * @value: the value to be stacked
-*/
-
-/* Define your instructions array */
 instruction_t instructions[] = {
 	{"push", push},
 	{"pall", pall},
@@ -16,8 +9,19 @@ instruction_t instructions[] = {
 	{"add", add},
 	{"nop", nop},
 	{"sub", sub},
+	{"div", div_op},
+	{"mul", mul_op},
+	{"mod", mod_op},
 	{NULL, NULL} /* End of array marker */
 };
+
+/**
+ * push - function to add an item on top of the stack
+ * @stack: doubly linked list
+ * @value: the value to be stacked
+*/
+
+/* Define your instructions array */
 
 void push(stack_t **stack, unsigned int value)
 {
@@ -37,6 +41,7 @@ void push(stack_t **stack, unsigned int value)
 	{
 		(*stack)->prev = new_node;
 	}
+
 
 	*stack = new_node;
 }
