@@ -5,7 +5,15 @@
  * @stack: doubly linked list
  * @value: the value to be stacked
 */
-void push(stack_t **stack, int value)
+
+/* Define your instructions array */
+instruction_t instructions[] = {
+	{"push", push},
+	{"pall", pall},
+	{NULL, NULL} /* End of array marker */
+};
+
+void push(stack_t **stack, unsigned int value)
 {
 	stack_t *new_node = malloc(sizeof(stack_t));
 
