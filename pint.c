@@ -5,17 +5,17 @@
  * @line_number: Line number in the Monty bytecode file
  *
  * Description:
- *   - If the stack is empty, prints an error message and exits with EXIT_FAILURE.
+ *   - If the stack is empty, prints an error message and exits.
  *   - Otherwise, prints the value at the top of the stack.
  * Code by LINUS OBURA @ ALX
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-    if (!stack || !(*stack))
-    {
-        fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
-        exit(EXIT_FAILURE);
-    }
+	if (!stack || !(*stack))
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-    printf("%d\n", (*stack)->n);
+	printf("%d\n", (*stack)->n);
 }
