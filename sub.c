@@ -22,12 +22,12 @@ void sub(stack_t **stack, unsigned int line_number)
 	if (!stack || !(*stack) || !(*stack)->next)
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 
-    (*stack)->n -= (*stack)->next->n;
+	(*stack)->n -= (*stack)->next->n;
 
-    temp = *stack;
-    *stack = temp->next;
-    (*stack)->prev = NULL;
+	temp = *stack;
+	*stack = temp->next;
+	(*stack)->prev = NULL;
 }

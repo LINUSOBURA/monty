@@ -37,7 +37,7 @@ void process_line(char *line, stack_t **stack, unsigned int line_number)
 	if (!instruction)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 
     /* Call the function associated with the opcode */
