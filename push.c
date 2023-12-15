@@ -15,6 +15,7 @@ instruction_t instructions[] = {
 	{"swap", swap},
 	{"add", add},
 	{"nop", nop},
+	{"sub", sub},
 	{NULL, NULL} /* End of array marker */
 };
 
@@ -25,7 +26,7 @@ void push(stack_t **stack, unsigned int value)
 	if (!new_node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		exit(-1);
 	}
 
 	new_node->n = value;
