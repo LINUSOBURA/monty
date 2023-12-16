@@ -40,6 +40,12 @@ void process_line(char *line, stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
+	if (!arg && strcmp(opcode, "push") == 0)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
     /* Call the function associated with the opcode */
 	instruction->f(stack, line_number);
 }
