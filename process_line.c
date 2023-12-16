@@ -21,7 +21,6 @@ void process_line(char *line, stack_t **stack, unsigned int line_number)
 {
 	char *opcode, *arg;
 	instruction_t *instruction;
-	int val;
 
     /* Tokenize the line to get opcode and argument */
 	opcode = strtok(line, " ");
@@ -41,14 +40,6 @@ void process_line(char *line, stack_t **stack, unsigned int line_number)
 	}
 
 	if (!arg && strcmp(opcode, "push") == 0)
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
-	val = atoi(arg);
-
-	if (val == 0 && strcmp(arg, "0") != 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
