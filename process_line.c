@@ -21,6 +21,7 @@ void process_line(char *line, stack_t **stack, unsigned int line_number)
 {
 	char *opcode, *arg;
 	instruction_t *instruction;
+	int val;
 
     /* Tokenize the line to get opcode and argument */
 	opcode = strtok(line, " ");
@@ -31,18 +32,26 @@ void process_line(char *line, stack_t **stack, unsigned int line_number)
 		return; /* Ignore empty lines and comments */
 	}
 
-	(void)arg;
+
+	if (!arg && strcmp(opcode, "push") == 0)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	val = atoi(arg);
+
+	if (val == 0 && strcmp(arg, "0") != 0)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
 	instruction = get_instruction(opcode);
 
 	if (!instruction)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-		exit(EXIT_FAILURE);
-	}
-
-	if (!arg && strcmp(opcode, "push") == 0)
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
