@@ -45,6 +45,25 @@ void process_line(char *line, stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-    /* Call the function associated with the opcode */
-	instruction->f(stack, line_number);
+	if (strcmp(opcode, "push") == 0)
+	{
+		while (arg)
+		{
+			int val = atoi(arg);
+			if (val == 0 && strcmp(arg, "0") != 0)
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
+				exit(EXIT_FAILURE);
+			}
+			push(stack, val);
+			arg = strtok(NULL, " ");
+		}
+	}
+	else
+	{
+		/* Call the function associated with the opcode */
+		instruction->f(stack, line_number);
+	}
+
+    
 }
