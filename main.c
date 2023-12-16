@@ -28,12 +28,10 @@ int main(int argc, char *argv[])
 	stack_t *stack;
 	size_t len = 0, line_len;
 	unsigned int line_number = 0;
-	char *filename;
 
-	filename = argv[0];
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: %s file\n", filename);
+		fprintf(stderr, "USAGE: %s file\n", basename(argv[0]));
 		return (EXIT_FAILURE);
 	}
 

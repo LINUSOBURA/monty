@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <string.h>
 #include <unistd.h>
+#include <libgen.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
